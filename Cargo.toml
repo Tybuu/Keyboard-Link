@@ -1,0 +1,9 @@
+[package]
+name = "keyboard-link"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hidapi = { version = "*", default-features = false, features = [
+  "linux-static-libusb",
+] }
