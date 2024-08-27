@@ -2,7 +2,7 @@
 # Keyboard-Link
 
 Keyboard-Link is a program which allows the keyboard halves in 
-[Keyboard](https://github.com/Tybuu/Keyboard) communicate with one another
+[Keyboard](https://github.com/Tybuu/Keyboard) to communicate with one another
 using the HID protocol.
 
 ## Running Keyboard-Link
