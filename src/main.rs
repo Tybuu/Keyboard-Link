@@ -32,7 +32,7 @@ fn main() {
     });
     loop {
         let buf = rx.recv().expect("Reading channel failed");
-        match left_dev.write(&buf) {
+        match left_dev.write(&buf[0..5]) {
             Ok(_) => {}
             Err(_) => left_dev = open(&mut api.lock().unwrap(), 0xa55, 1),
         }
@@ -42,6 +42,7 @@ fn main() {
 fn open(api: &mut HidApi, pid: u16, i_num: i32) -> HidDevice {
     loop {
         api.refresh_devices().unwrap();
+        println!("Device opening");
         if let Some(dev) = api
             .device_list()
             .find(|dev: &&DeviceInfo| dev.interface_number() == i_num && dev.product_id() == pid)
