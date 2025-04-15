@@ -1,6 +1,7 @@
 use std::{
     sync::{mpsc, Arc, Mutex},
-    thread,
+    thread::{self, sleep},
+    time::Duration,
 };
 
 use hidapi::{DeviceInfo, HidApi, HidDevice};
@@ -52,6 +53,7 @@ fn open(api: &mut HidApi, pid: u16, i_num: i32) -> HidDevice {
                 if real_dev.is_ok() {
                     return real_dev.unwrap();
                 }
+                sleep(Duration::from_secs(1));
             }
         }
     }
